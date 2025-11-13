@@ -1,0 +1,16 @@
+import axios from "axios";
+
+// If you change REACT_APP_API_URL, you MUST restart `npm start`.
+const API_BASE_URL =
+  process.env.REACT_APP_API_URL || "http://localhost:5000/api";
+
+const axiosClient = axios.create({ baseURL: API_BASE_URL });
+
+axiosClient.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
+
+export default axiosClient;
+

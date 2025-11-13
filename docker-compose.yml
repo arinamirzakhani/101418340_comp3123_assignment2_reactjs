@@ -1,0 +1,43 @@
+services:
+  mongo:
+    image: mongo:6
+    # ❌ don't force the name "mongo" so we don't clash with an existing container
+    # container_name: mongo
+    restart: always
+    # ❌ don't publish 27017 on the host so it doesn't fight with your other Mongo
+    # ports:
+    #   - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+
+  backend:
+    build: ./backend
+    # container_name is optional; you can keep or remove these if you like
+    container_name: backend
+    restart: always
+    environment:
+      # backend talks to Mongo using the service name "mongo" on the internal Docker network
+      - MONGO_URI=mongodb://mongo:27017/comp3123_assignment2
+      - JWT_SECRET=supersecretjwtkey
+      - PORT=5000
+    ports:
+      # expose backend to your HOST so the browser can hit http://localhost:5000
+      - "5000:5000"
+    depends_on:
+      - mongo
+
+  frontend:
+    build: ./frontend
+    container_name: frontend
+    restart: always
+    environment:
+      # IMPORTANT: this is used by the React app in the browser,
+      # so it must point to localhost, not "backend"
+      - REACT_APP_API_URL=http://localhost:5000/api
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+volumes:
+  mongo_data:
