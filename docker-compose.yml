@@ -1,18 +1,14 @@
 services:
   mongo:
     image: mongo:6
-    # ❌ don't force the name "mongo" so we don't clash with an existing container
-    # container_name: mongo
+    # container_name: mongo   # optional
     restart: always
-    # ❌ don't publish 27017 on the host so it doesn't fight with your other Mongo
-    # ports:
-    #   - "27017:27017"
+    # no host port for Mongo to avoid conflicts
     volumes:
       - mongo_data:/data/db
 
   backend:
     build: ./backend
-    # container_name is optional; you can keep or remove these if you like
     container_name: backend
     restart: always
     environment:
@@ -25,6 +21,9 @@ services:
       - "5000:5000"
     depends_on:
       - mongo
+    volumes:
+      # 👇 map container's /app/uploads to your local backend/uploads folder
+      - ./backend/uploads:/app/uploads
 
   frontend:
     build: ./frontend
@@ -41,3 +40,4 @@ services:
 
 volumes:
   mongo_data:
+

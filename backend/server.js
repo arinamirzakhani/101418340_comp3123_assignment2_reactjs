@@ -1,3 +1,4 @@
+// server.js
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
@@ -10,10 +11,10 @@ dotenv.config();
 
 const app = express();
 
-// DB
+// Connect to MongoDB
 connectDB();
 
-// Make sure uploads/ directory exists (for Multer + static files)
+// Ensure uploads/ directory exists (for Multer + static files)
 const uploadsPath = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadsPath)) {
   fs.mkdirSync(uploadsPath, { recursive: true });
@@ -24,7 +25,7 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
-// Serve uploads
+// Serve uploaded images
 app.use("/uploads", express.static(uploadsPath));
 
 // Routes
@@ -39,4 +40,5 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`✅ Backend running on port ${PORT}`);
 });
+
 
