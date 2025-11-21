@@ -1,10 +1,10 @@
 const { isValidEmail } = require("../utils/validators");
 
-// Runs AFTER multer (so we can read req.body from a multipart form)
+
 function validateEmployee(req, res, next) {
   const { name, email, department, position, salary } = req.body;
 
-  // Fail fast with precise messages
+  
   if (!name || !email || !department || !position || salary == null) {
     return res.status(400).json({ message: "All fields except picture are required" });
   }
@@ -19,7 +19,7 @@ function validateEmployee(req, res, next) {
     return res.status(400).json({ message: "Salary must be a positive number" });
   }
 
-  // normalize values so the handler gets clean data
+  
   req.body.email = normalizedEmail;
   req.body.name = String(name).trim();
   req.body.department = String(department).trim();

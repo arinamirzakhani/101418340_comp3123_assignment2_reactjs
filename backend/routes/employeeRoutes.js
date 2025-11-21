@@ -23,7 +23,7 @@ router.use(authMiddleware);
 // CREATE
 router.post("/employees",
   upload.single("profileImage"),
-  validateEmployee, // <- ✅ hard gate here
+  validateEmployee, 
   async (req, res) => {
     try {
       const profileImageUrl = req.file ? `/uploads/${req.file.filename}` : "";
@@ -73,7 +73,7 @@ router.get("/employees/:id", async (req, res) => {
 // UPDATE
 router.put("/employees/:id",
   upload.single("profileImage"),
-  validateEmployee, // <- ✅ hard gate here
+  validateEmployee, 
   async (req, res) => {
     try {
       const update = {
@@ -88,7 +88,7 @@ router.put("/employees/:id",
       const updated = await Employee.findByIdAndUpdate(
         req.params.id,
         update,
-        { new: true, runValidators: true, context: "query" } // <- keep validators active
+        { new: true, runValidators: true, context: "query" } 
       );
       if (!updated) return res.status(404).json({ message: "Employee not found" });
       res.json(updated);

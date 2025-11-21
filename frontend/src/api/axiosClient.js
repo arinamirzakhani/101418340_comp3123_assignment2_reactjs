@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// If you change REACT_APP_API_URL, you MUST restart `npm start`.
+
 const API_BASE_URL =
   process.env.REACT_APP_API_URL || "http://localhost:5000/api";
 

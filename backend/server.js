@@ -14,7 +14,7 @@ const app = express();
 // Connect to MongoDB
 connectDB();
 
-// Ensure uploads/ directory exists (for Multer + static files)
+
 const uploadsPath = path.join(__dirname, "uploads");
 if (!fs.existsSync(uploadsPath)) {
   fs.mkdirSync(uploadsPath, { recursive: true });

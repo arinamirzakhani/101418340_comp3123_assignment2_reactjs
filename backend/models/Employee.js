@@ -19,7 +19,7 @@ const employeeSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-// Also enforce on findOneAndUpdate-style updates
+
 employeeSchema.pre("findOneAndUpdate", function (next) {
   const u = this.getUpdate() || {};
   if (u.email && !isValidEmail(String(u.email))) {
