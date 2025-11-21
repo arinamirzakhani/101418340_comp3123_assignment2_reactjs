@@ -1,70 +1,170 @@
-# Getting Started with Create React App
+📘 COMP3123 – Assignment 2
+Employee Management System (React + Node + MongoDB + Docker)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Student: Arina Mirzakhani
+Student ID: 101418340
 
-## Available Scripts
+🚀 Overview
 
-In the project directory, you can run:
+This project is a full-stack Employee Management System built with:
 
-### `npm start`
+Backend: Node.js, Express, MongoDB, JWT, Multer
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Frontend: ReactJS, Material-UI, Axios
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Deployment: Docker Compose (frontend + backend + MongoDB)
 
-### `npm test`
+The application includes authentication, full CRUD functionality, search, validation, and file uploads.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+✨ Key Features
+🔐 Authentication
 
-### `npm run build`
+User Signup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+User Login
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+JWT-based Authorization
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Protected frontend routes
 
-### `npm run eject`
+👤 Employee Management
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Add new employee
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+View employee details
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Update employee
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Delete employee
 
-## Learn More
+Upload employee profile picture
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+🔍 Search
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+Search employees by department
 
-### Code Splitting
+Search employees by position
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Supports combined filtering
 
-### Analyzing the Bundle Size
+🎨 UI/UX
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+Built using Material-UI
 
-### Making a Progressive Web App
+Responsive, clean, user-friendly interface
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+🧪 REST API Endpoints
+Auth
 
-### Advanced Configuration
+POST /api/auth/signup
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+POST /api/auth/login
 
-### Deployment
+Employees
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+GET /api/employees
 
-### `npm run build` fails to minify
+POST /api/employees
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+GET /api/employees/:id
+
+PUT /api/employees/:id
+
+DELETE /api/employees/:id
+
+GET /api/employees/search
+
+🐳 Run With Docker
+1. Clone the repository
+git clone https://github.com/arinamirzakhani/101418340_comp3123_assignment2_reactjs
+cd 101418340_comp3123_assignment2_reactjs
+
+2. Start all services
+docker-compose up --build
+
+Application URLs
+
+Frontend: http://localhost:3000
+
+Backend: http://localhost:5000/api
+
+▶️ Run Without Docker
+Backend
+cd backend
+npm install
+npm start
+
+
+Create .env:
+
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/comp3123_assignment2
+JWT_SECRET=yourSecretKey
+
+Frontend
+cd frontend
+npm install
+npm start
+
+
+Create .env:
+
+REACT_APP_API_URL=http://localhost:5000/api
+
+🧾 Validation
+
+The app validates:
+
+Required input fields
+
+Email format
+
+Password format
+
+Missing fields
+
+Invalid login/signup
+
+Invalid employee fields
+
+Both frontend and backend validations are implemented.
+
+📸 Included Screenshots
+
+The submission PDF contains the following:
+
+MongoDB data
+
+Postman API tests (Signup, Login, CRUD, Search)
+
+Frontend CRUD UI pages
+
+Search functionality
+
+Form validation/error messages
+
+Docker containers running
+
+📦 ZIP Submission Notes
+
+Remove:
+
+node_modules (frontend + backend)
+
+.git folders
+
+Include:
+
+All source code
+
+docker-compose.yml
+
+Dockerfiles
+
+README.md
+
+👤 Author
+
+Arina Mirzakhani
+COMP3123 – Full-Stack Development
+George Brown College
